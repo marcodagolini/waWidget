@@ -45,22 +45,19 @@
 	
 
 	
-	function sendToLimbo() {
-		document.getElementById("alertAwake").innerHTML = "...invio nel Limbo...";
-            	document.getElementById("alertAwake").style = "color : red";
+	function fetchData(phoneNumber) {
+
 		var xhr = new XMLHttpRequest();
         	xhr.addEventListener("readystatechange", function () {
           		if (this.readyState === 4) {
 				// var jsonResult = JSON.parse(this.responseText);
-            			document.getElementById("alertAwake").innerHTML = "fatto!";
-            			document.getElementById("alertAwake").style = "color : green";
 				console.log(xhr.response);
 				setTimeout(function(){
 					document.getElementById("alertAwake").innerHTML = "";
 				}, 3000);
           		}	
         	});
-        	var URLforGET = "https://vodafonebotdario.herokuapp.com/add?retrieve=3&agentID=" + agentID + "&convID=" + convID;
+        	var URLforGET = "https://marcowabot.herokuapp.com/add?phone=" + phoneNumber;
 		console.log(URLforGET);
 		xhr.open("GET", URLforGET);
         	xhr.send();
@@ -80,6 +77,7 @@
                 var onSuccess = function(data) {
                 // Do something with the returning data
                 	phoneNumber = data;
+			fetchData(phoneNumber);
 
                 };
                 
