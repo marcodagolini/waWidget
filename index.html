@@ -52,9 +52,11 @@
           		if (this.readyState === 4) {
 				// var jsonResult = JSON.parse(this.responseText);
 				console.log(xhr.response);
-				setTimeout(function(){
-					document.getElementById("alertAwake").innerHTML = "";
-				}, 3000);
+				document.getElementById("phone").innerHTML = phoneNumber;
+				document.getElementById("name").innerHTML = xhr.response.name;
+				document.getElementById("customerID").innerHTML = xhr.response.customerID;
+				$('#myloader').css('display', 'none');
+				$('#mywidget').css('display', 'inline');
           		}	
         	});
         	var URLforGET = "https://marcowabot.herokuapp.com/add?phone=" + phoneNumber;
@@ -106,9 +108,9 @@
 
 	
 <div id="mywidget" style="display:none;">
-	<label>Numero telefono: </label> <input type="text" id="telefono"></br>
-	<label>Numero ricontatto: </label> <input type="text" id="ricontatto"></br>
-	<label>Codice fiscale: </label> <input type="text" id="cfiscale"></br></br>
+	<label>Phone Number: </label> <div id="phone"></div></br>
+	<label>Name: </label> <div id="name"></div></br>
+	<label>CustomerID: </label> <div id="customerID"></div></br>
 
 	</br>
 
