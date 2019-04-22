@@ -52,9 +52,10 @@
           		if (this.readyState === 4) {
 				// var jsonResult = JSON.parse(this.responseText);
 				console.log(xhr.response);
+				var myResponse = JSO.parse(xhr.response).
 				document.getElementById("phone").innerHTML = phoneNumber;
-				document.getElementById("name").innerHTML = xhr.response.name;
-				document.getElementById("customerID").innerHTML = xhr.response.customerID;
+				document.getElementById("name").innerHTML = myResponse.name;
+				document.getElementById("customerID").innerHTML = myResponse.customerID;
 				$('#myloader').css('display', 'none');
 				$('#mywidget').css('display', 'inline');
           		}	
