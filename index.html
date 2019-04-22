@@ -53,10 +53,17 @@
           		if (this.readyState === 4) {
 				// var jsonResult = JSON.parse(this.responseText);
 				console.log(xhr.response);
-				var myResponse = JSON.parse(xhr.response);
-				document.getElementById("phone").innerHTML = phoneNumber;
-				document.getElementById("name").innerHTML = myResponse.name;
-				document.getElementById("customerID").innerHTML = myResponse.customerID;
+				if (xhr.response === "error"){
+					document.getElementById("phone").innerHTML = phoneNumber;
+					document.getElementById("name").innerHTML = "error";
+					document.getElementById("customerID").innerHTML = "error";
+				} else{
+					var myResponse = JSON.parse(xhr.response);
+					document.getElementById("phone").innerHTML = phoneNumber;
+					document.getElementById("name").innerHTML = myResponse.name;
+					document.getElementById("customerID").innerHTML = myResponse.customerID;
+				}
+
 				$('#myloader').css('display', 'none');
 				$('#mywidget').css('display', 'inline');
           		}	
