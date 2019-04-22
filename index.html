@@ -67,180 +67,24 @@
               
               	var SDK=lpTag.agentSDK;
               	SDK.init();
-		var call1 = 0;
-		var call2 = 0;
-		var call3 = 0;
-		var call4 = 0;
-		var call5 = 0;
+		var phoneNumber;
+
 		
-                var onSuccess1 = function(data) {
+                var onSuccess = function(data) {
                 // Do something with the returning data
-                	convID = data;
-			$("textarea#myconversationID").val("Ticket nr: " + convID);
-			call1 = 1;
-			if (call2 == 1 && call5 == 1 && convID !== null && visitorID !== null){
-				doMyGet();
-			}
+                	phoneNumber = data;
+
                 };
                 
-                var onError1 = function(data) {
+                var onError = function(data) {
                 // Do something with the returning data
-                	convID = null;
-                };
-		
-		var onSuccess2 = function(data) {
-			visitorID = data;
-			call2 = 1;
-			if (call1 == 1 && call5 == 1 && convID !== null && visitorID !== null){
-				doMyGet();
-			}
-		};
-                
-                var onError2 = function(data) {
-                // Do something with the returning data
-                	visitorID = null;
-                };
-		
-		var onSuccess3 = function(data) {
-                // Do something with the returning data
-                	skill = data;
-			console.log("***skill: " + data + " ***");
-                };
-                
-                var onError3 = function(data) {
-                // Do something with the returning data
-                	skill = null;
-                };
-		
-		var onSuccess4 = function(data) {
-                // Do something with the returning data
-                	agentID = data;
-                };
-                
-                var onError4 = function(data) {
-                // Do something with the returning data
-                	agentID = null;
+                	phoneNumber = null;
                 };
 		
 		
-		var onSuccess5 = function(data) {
-                // Do something with the returning data
-			cfiscaleTobi = data;
-                	console.log("*****: " + data);
-                };
-                
-                var onError5 = function(data) {
-                // Do something with the returning data
-                	cfiscaleTobi = null;
-                };
-		
-		var onSuccess6 = function(data) {
-                // Do something with the returning data
-			ricontattoTobi = data;
-                	console.log("*****: " + data);
-                };
-                
-                var onError6 = function(data) {
-                // Do something with the returning data
-                	ricontattoTobi = null;
-                };
-		
-		var onSuccess7 = function(data) {
-                // Do something with the returning data
-			telefonoTobi = data;
-                	console.log("*****: " + data);
-                };
-                
-                var onError7 = function(data) {
-                // Do something with the returning data
-                	telefonoTobi = null;
-                };
-		
-		var onSuccess8 = function(data) {
-                // Do something with the returning data
-			assignedAgent = data;
-			console.log("assigned: " + assignedAgent);
-			call3 = 1;
-			if (call4 == 1 && assignedAgent !== null && thisAgent !== null){
-				if( assignedAgent === thisAgent){
-					$("#submit").prop( "disabled", false );
-					$("#submitawake").prop( "disabled", false );
-					$("#submitlimbo").prop( "disabled", false );
-					$("#submitNPS").prop( "disabled", false );
-					
-				}
-				
-			}
-                };
-                
-                var onError8 = function(data) {
-                // Do something with the returning data
-                	assignedAgent = null;
-                };
-		
-		var onSuccess9 = function(data) {
-                // Do something with the returning data
-			thisAgent = data;
-			console.log("thisAgent: " + thisAgent);
-			call4 = 1;
-			if (call3 == 1 && assignedAgent !== null && thisAgent !== null){
-				if( assignedAgent === thisAgent){
-					$("#submit").prop( "disabled", false );
-					$("#submitawake").prop( "disabled", false );
-					$("#submitlimbo").prop( "disabled", false );
-					$("#submitNPS").prop( "disabled", false );
-					
-				}
-			}
-                };
-                
-                var onError9 = function(data) {
-                // Do something with the returning data
-                	thisAgent = null;
-                };
-		
-		var onSuccess10 = function(data) {
-                // Do something with the returning data
-			routing = data;
-			call5 = 1;
-			if (call1 == 1 && call2 == 1 && convID !== null && visitorID !== null){
-				doMyGet();
-			}
-                	console.log("*****: " + data);
-                };
-                
-                var onError10 = function(data) {
-                // Do something with the returning data
-                	routing = null;
-                };
-		
-		
-		var onSuccess11 = function(data) {
-                // Do something with the returning data
-			agentGroup = data;
-			
-                };
-                
-                var onError11 = function(data) {
-                // Do something with the returning data
-                	agentGroup = null;
-                };
-               
-               
-   
-               
-             
-                SDK.get('chatInfo.rtSessionId', onSuccess1, onError1);
-		SDK.get('visitorInfo.visitorId', onSuccess2, onError2);
-		SDK.get('engagementInfo.skill', onSuccess3, onError3);
-		SDK.get('agentInfo.agentId', onSuccess4, onError4);
-		SDK.get('authenticatedData.customerDetails.customerId', onSuccess5, onError5); //codice fiscale
-		SDK.get('authenticatedData.customerDetails.imei', onSuccess6, onError6); //ricontatto
-		SDK.get('authenticatedData.personalInfo.contactInfo', onSuccess7, onError7); //telefono
-		SDK.get('agentInfo.agentId', onSuccess8, onError8); //currentagent
-		SDK.get('chattingAgentInfo.agentId', onSuccess9, onError9); //agentassigned
-		SDK.get('authenticatedData.customerDetails.type', onSuccess10, onError10); //routing
-		SDK.get('chattingAgentInfo.agentGroupName', onSuccess11, onError11); //group
+
+		SDK.get('authenticatedData.customerDetails.imei', onSuccess, onError); //ricontatto
+
                
               
            });
@@ -251,7 +95,7 @@
 </script>
 	
 <div id="myloader">
-    	<h2>Loading your page...</h2>
+    	<h2>Loading your data...</h2>
     	<div class="loader"></div>
 </div>
 
@@ -260,8 +104,7 @@
 	<label>Numero telefono: </label> <input type="text" id="telefono"></br>
 	<label>Numero ricontatto: </label> <input type="text" id="ricontatto"></br>
 	<label>Codice fiscale: </label> <input type="text" id="cfiscale"></br></br>
-	<label>Tobi ha capito? si</label> <input type="checkbox" value="understood" id="understood"> <label>no</label><input type="checkbox" value="notUnderstood" id="notUnderstood"> <label>NV</label><input type="checkbox" value="notAvailable" id="notAvailable"></br></br>
-	<label>Inserisci un tag: </label>
+
 	</br>
 
 
