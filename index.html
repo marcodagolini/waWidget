@@ -52,7 +52,7 @@
           		if (this.readyState === 4) {
 				// var jsonResult = JSON.parse(this.responseText);
 				console.log(xhr.response);
-				var myResponse = JSON.parse(xhr.response).
+				var myResponse = JSON.parse(xhr.response);
 				document.getElementById("phone").innerHTML = phoneNumber;
 				document.getElementById("name").innerHTML = myResponse.name;
 				document.getElementById("customerID").innerHTML = myResponse.customerID;
