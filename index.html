@@ -71,12 +71,12 @@
 				if (xhr.response === "error"){
 					document.getElementById("phone").innerHTML = phoneNumber;
 					document.getElementById("name").innerHTML = "error";
-					document.getElementById("customerID").innerHTML = "error";
+					document.getElementById("customerType").innerHTML = "error";
 				} else{
 					var myResponse = JSON.parse(xhr.response);
 					document.getElementById("phone").innerHTML = phoneNumber;
 					document.getElementById("name").innerHTML = myResponse.name;
-					document.getElementById("customerID").innerHTML = myResponse.customerID;
+					document.getElementById("customerType").innerHTML = myResponse.customerType;
 				}
 
 				$('#myloader').css('display', 'none');
@@ -132,9 +132,10 @@
 
 	
 <div id="mywidget" class="divwidget">
-	<label>Phone Number: </label> <div id="phone"></div></br>
+	
 	<label>Name: </label> <div id="name"></div></br>
-	<label>CustomerID: </label> <div id="customerID"></div></br>
+	<label>Phone Number: </label> <div id="phone"></div></br>
+	<label>Customer Type: </label> <div id="customerType"></div></br>
 
 	</br>
 
