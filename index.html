@@ -30,6 +30,7 @@
 	
 	
 	function fetchData(phoneNumber) {
+		console.log(JSON.stringify(phoneNumber));
 		var xhr = new XMLHttpRequest();
         	xhr.addEventListener("readystatechange", function () {
           		if (this.readyState === 4) {
