@@ -84,7 +84,7 @@
 						var myResponse = JSON.parse(xhr.response);
 						document.getElementById("phone").innerHTML = phoneNumber;
 						$('#name').val(myResponse.name);
-						$('#facebookID').val("error");
+						$('#facebookID').val(myResponse.facebookID);
 						if(myResponse.status === "VIP"){
 							$("#myctype").prop("selectedIndex", 0).change();
 						} else if(myResponse.status === "disturber"){
@@ -153,11 +153,11 @@
 	
 	<label>Name: </label></br>
 	<input type="text" id="name" value="...loading"></br>
-	</br></br>
+	</br>
 	<label>Phone Number: </label> <div id="phone">...loading</div></br>
 	<label>Facebook ID: </label></br>
 	<input type="text" id="facebookID" value="...loading"></br>
-	</br></br>
+	</br>
 	<label>Customer Type: </label>
 	<div id="ctype"> 
 		<select id="myctype">
