@@ -58,6 +58,29 @@
 	
 	function sendData(){
 		console.log("sending");
+		document.getElementById("alertAwake").innerHTML = "...sending data...";
+            	document.getElementById("alertAwake").style = "color : red";
+		var xhr = new XMLHttpRequest();
+        	xhr.addEventListener("readystatechange", function () {
+          		if (this.readyState === 4) {
+				// var jsonResult = JSON.parse(this.responseText);
+            			document.getElementById("alertAwake").innerHTML = "done!";
+            			document.getElementById("alertAwake").style = "color : green";
+				console.log(xhr.response);
+				setTimeout(function(){
+					document.getElementById("alertAwake").innerHTML = "";
+				}, 3000);
+          		}	
+        	});
+        	var URLforPOST = "https://marcowabot.herokuapp.com/push;
+		console.log(URLforPOST);
+		xhr.open("POST", URLforPOST);
+		var phone = "";
+		var name = "";
+		var facebookID = "";
+		var status = "";
+		var myBodyToSend = {"phone": phone, "name": name, "facebookID": facebookID, "status": status};
+        	xhr.send(myBodyToSend);
 	}
 	
 	
@@ -168,7 +191,8 @@
 	</div>
 	</br>
 	</br>
-	<button id ="submit" class="send-button" type="button" onclick="sendData()" disabled>Send data</button>
+	<button id ="submit" class="send-button" type="button" onclick="sendData()" disabled>Send data</button></br>
+	<div id="alertAwake"></div>
 
 
 
