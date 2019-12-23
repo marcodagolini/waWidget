@@ -83,8 +83,20 @@
                 	phoneNumber = null;
                 };
 		
+		var onSuccessClaims = function(data) {
+                // Do something with the returning data
+                	var mySub = data;
+			console.log("subID --> " + mySub);
+                };
+                
+                var onErrorClaims = function(data) {
+                // Do something with the returning data
+                	
+                };
+		
 		
 		SDK.get('authenticatedData.personalInfo.contactInfo[0].phone', onSuccess, onError); //ricontatto
+		SDK.get('claimsAndAuthType.claims.sub', onSuccessClaims, onErrorClaims);
                
               
            });
