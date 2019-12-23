@@ -31,30 +31,35 @@
 	
 	
 	function fetchData(phoneNumber) {
-		console.log(JSON.stringify(phoneNumber));
-		console.log(typeof phoneNumber);
-		var xhr = new XMLHttpRequest();
-        	xhr.addEventListener("readystatechange", function () {
-          		if (this.readyState === 4) {
-				// var jsonResult = JSON.parse(this.responseText);
-				console.log(xhr.response);
-				if (xhr.response === "error"){
-					document.getElementById("phone").innerHTML = phoneNumber;
-					document.getElementById("name").innerHTML = "error";
-					document.getElementById("customerType").innerHTML = "error";
-				} else{
-					var myResponse = JSON.parse(xhr.response);
-					document.getElementById("phone").innerHTML = phoneNumber;
-					document.getElementById("name").innerHTML = myResponse.name;
-					document.getElementById("customerType").innerHTML = myResponse.status;
-				}
-
-          		}	
-        	});
-        	var URLforGET = "https://marcowabot.herokuapp.com/add?phone=" + phoneNumber;
-		console.log(URLforGET);
-		xhr.open("GET", URLforGET);
-        	xhr.send();
+		if(typeof phoneNumber === "object"){
+			document.getElementById("phone").innerHTML = "not available";
+			document.getElementById("name").innerHTML = "error";
+			document.getElementById("customerType").innerHTML = "error";
+		} else{
+			console.log(JSON.stringify(phoneNumber));
+			console.log(typeof phoneNumber);
+			var xhr = new XMLHttpRequest();
+			xhr.addEventListener("readystatechange", function () {
+				if (this.readyState === 4) {
+					// var jsonResult = JSON.parse(this.responseText);
+					console.log(xhr.response);
+					if (xhr.response === "error"){
+						document.getElementById("phone").innerHTML = phoneNumber;
+						document.getElementById("name").innerHTML = "error";
+						document.getElementById("customerType").innerHTML = "error";
+					} else{
+						var myResponse = JSON.parse(xhr.response);
+						document.getElementById("phone").innerHTML = phoneNumber;
+						document.getElementById("name").innerHTML = myResponse.name;
+						document.getElementById("customerType").innerHTML = myResponse.status;
+					}
+				}	
+			});
+			var URLforGET = "https://marcowabot.herokuapp.com/add?phone=" + phoneNumber;
+			console.log(URLforGET);
+			xhr.open("GET", URLforGET);
+			xhr.send();
+		}
 		
 	}	
 	
