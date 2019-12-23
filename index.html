@@ -66,8 +66,7 @@
 		if(typeof phoneNumber === "object"){
 			document.getElementById("phone").innerHTML = "not available";
 			$('#name').val("error");
-			
-			document.getElementById("FacebookID").innerHTML = "error";
+			$('#facebookID').val("error");
 			$("#myctype").prop("selectedIndex", 2).change();
 		} else{
 			console.log(JSON.stringify(phoneNumber));
@@ -80,15 +79,13 @@
 					if (xhr.response === "error"){
 						document.getElementById("phone").innerHTML = phoneNumber;
 						$('#name').val("error");
-						
-						document.getElementById("FacebookID").innerHTML = "error";
+						$('#facebookID').val("error");
 						$("#myctype").prop("selectedIndex", 2).change();
 					} else{
 						var myResponse = JSON.parse(xhr.response);
 						document.getElementById("phone").innerHTML = phoneNumber;
 						$('#name').val(myResponse.name);
-						
-						document.getElementById("FacebookID").innerHTML = myResponse.facebookID;
+						$('#facebookID').val("error");
 						if(myResponse.status === "VIP"){
 							$("#myctype").prop("selectedIndex", 0).change();
 						} else if(myResponse.status === "disturber"){
@@ -155,9 +152,13 @@
 	
 <div id="mywidget" class="divwidget">
 	
-	<label>Name: </label> <input type="text" id="name" value="...loading"></br>
+	<label>Name: </label></br>
+	<input type="text" id="name" value="...loading"></br>
+	</br></br>
 	<label>Phone Number: </label> <div id="phone">...loading</div></br>
-	<label>Facebook ID: </label> <div id="FacebookID">...loading</div></br>
+	<label>Facebook ID: </label></br>
+	<input type="text" id="facebookID" value="...loading"></br>
+	</br></br>
 	<label>Customer Type: </label>
 	<div id="ctype"> 
 		<select id="myctype">
