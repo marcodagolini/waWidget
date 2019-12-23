@@ -65,7 +65,7 @@
 	function fetchData(phoneNumber) {
 		if(typeof phoneNumber === "object"){
 			document.getElementById("phone").innerHTML = "not available";
-			$('#nome').val("error");
+			$('#name').val("error");
 			
 			document.getElementById("FacebookID").innerHTML = "error";
 			$("#myctype").prop("selectedIndex", 2).change();
@@ -79,14 +79,14 @@
 					console.log(xhr.response);
 					if (xhr.response === "error"){
 						document.getElementById("phone").innerHTML = phoneNumber;
-						$('#nome').val("error");
+						$('#name').val("error");
 						
 						document.getElementById("FacebookID").innerHTML = "error";
 						$("#myctype").prop("selectedIndex", 2).change();
 					} else{
 						var myResponse = JSON.parse(xhr.response);
 						document.getElementById("phone").innerHTML = phoneNumber;
-						$('#nome').val(myResponse.name);
+						$('#name').val(myResponse.name);
 						
 						document.getElementById("FacebookID").innerHTML = myResponse.facebookID;
 						if(myResponse.status === "VIP"){
