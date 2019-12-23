@@ -84,8 +84,7 @@
 		var phone = $("#phone").html();
 		var name = $("#name").val();
 		var facebookID = $("#facebookID").val();
-		var e = document.getElementById("myctype");
-		var status = e.options[e.selectedIndex].value;
+		var status = $("#myctype")[0].selectedOptions[0].innerHTML;
 		var myBodyToSend = JSON.stringify({"phone": phone, "name": name, "facebookID": facebookID, "status": status});
         	xhr.send(myBodyToSend);
 	}
