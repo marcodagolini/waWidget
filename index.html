@@ -56,6 +56,11 @@
 <script>
 	
 	
+	function sendData(){
+		console.log("sending");
+	}
+	
+	
 	function fetchData(phoneNumber) {
 		if(typeof phoneNumber === "object"){
 			document.getElementById("phone").innerHTML = "not available";
@@ -87,6 +92,7 @@
 						} else{
 							$("#myctype").prop("selectedIndex", 2).change();
 						}
+						$("#submit").prop( "disabled", false );
 						
 					}
 				}	
