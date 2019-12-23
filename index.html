@@ -34,6 +34,7 @@
 		if(typeof phoneNumber === "object"){
 			document.getElementById("phone").innerHTML = "not available";
 			document.getElementById("name").innerHTML = "error";
+			document.getElementById("FacebookID").innerHTML = "error";
 			document.getElementById("customerType").innerHTML = "error";
 		} else{
 			console.log(JSON.stringify(phoneNumber));
@@ -46,11 +47,13 @@
 					if (xhr.response === "error"){
 						document.getElementById("phone").innerHTML = phoneNumber;
 						document.getElementById("name").innerHTML = "error";
+						document.getElementById("FacebookID").innerHTML = "error";
 						document.getElementById("customerType").innerHTML = "error";
 					} else{
 						var myResponse = JSON.parse(xhr.response);
 						document.getElementById("phone").innerHTML = phoneNumber;
 						document.getElementById("name").innerHTML = myResponse.name;
+						document.getElementById("FacebookID").innerHTML = myResponse.facebookID;
 						document.getElementById("customerType").innerHTML = myResponse.status;
 					}
 				}	
