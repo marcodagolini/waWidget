@@ -79,7 +79,7 @@
 		var name = "ma";
 		var facebookID = "mauftyg";
 		var status = "ufgyihj";
-		var myBodyToSend = {"phone": phone, "name": name, "facebookID": facebookID, "status": status};
+		var myBodyToSend = JSON.stringify({"phone": phone, "name": name, "facebookID": facebookID, "status": status});
         	xhr.send(myBodyToSend);
 	}
 	
