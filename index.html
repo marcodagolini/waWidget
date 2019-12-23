@@ -79,9 +79,10 @@
 		xhr.open("POST", URLforPOST);
 		xhr.setRequestHeader("Content-Type", "application/json");
 		var phone = $("#phone").val();
-		var name = $("#name").attr('value');
+		var name = $("#name").val();
 		var facebookID = $("#facebookID").val();
-		var status = $("#myctype").val();
+		var e = document.getElementById("myctype");
+		var status = e.options[e.selectedIndex].value;
 		var myBodyToSend = JSON.stringify({"phone": phone, "name": name, "facebookID": facebookID, "status": status});
         	xhr.send(myBodyToSend);
 	}
