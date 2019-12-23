@@ -35,7 +35,7 @@
 			document.getElementById("phone").innerHTML = "not available";
 			document.getElementById("name").innerHTML = "error";
 			document.getElementById("FacebookID").innerHTML = "error";
-			document.getElementById("customerType").innerHTML = "error";
+			$("#myctype").prop("selectedIndex", 2).change();
 		} else{
 			console.log(JSON.stringify(phoneNumber));
 			console.log(typeof phoneNumber);
@@ -48,13 +48,12 @@
 						document.getElementById("phone").innerHTML = phoneNumber;
 						document.getElementById("name").innerHTML = "error";
 						document.getElementById("FacebookID").innerHTML = "error";
-						document.getElementById("customerType").innerHTML = "error";
+						$("#myctype").prop("selectedIndex", 2).change();
 					} else{
 						var myResponse = JSON.parse(xhr.response);
 						document.getElementById("phone").innerHTML = phoneNumber;
 						document.getElementById("name").innerHTML = myResponse.name;
 						document.getElementById("FacebookID").innerHTML = myResponse.facebookID;
-						document.getElementById("customerType").innerHTML = myResponse.status;
 						if(myResponse.status === "VIP"){
 							$("#myctype").prop("selectedIndex", 0).change();
 						} else if(myResponse.status === "disturber"){
@@ -123,7 +122,6 @@
 	<label>Name: </label> <div id="name">...loading</div></br>
 	<label>Phone Number: </label> <div id="phone">...loading</div></br>
 	<label>Facebook ID: </label> <div id="FacebookID">...loading</div></br>
-	<label>Customer Type: </label> <div id="customerType">...loading</div></br>
 	<label>Customer Type: </label>
 	<div id="ctype"> 
 		<select id="myctype">
