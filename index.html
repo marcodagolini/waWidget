@@ -54,6 +54,14 @@
 						document.getElementById("name").innerHTML = myResponse.name;
 						document.getElementById("FacebookID").innerHTML = myResponse.facebookID;
 						document.getElementById("customerType").innerHTML = myResponse.status;
+						if(myResponse.status === "VIP"){
+							$("#myctype").prop("selectedIndex", 0).change();
+						} else if(myResponse.status === "disturber"){
+							$("#myctype").prop("selectedIndex", 1).change();
+						} else{
+							$("#myctype").prop("selectedIndex", 2).change();
+						}
+						
 					}
 				}	
 			});
@@ -120,6 +128,7 @@
 		<select id="myctype">
 			<option value="0">VIP</option>
 			<option value="1">disturber</option>
+			<option value="2">prospect</option>
 		</select>
 	</div>
 
