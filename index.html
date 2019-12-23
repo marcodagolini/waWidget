@@ -6,33 +6,6 @@
 	
 <style>		
 	
-.divloader{
-  display: block;
-}
-	
-.divwidget{
-  display: none;
-}
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-	
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}   
-	
  
 </style>
  
@@ -73,8 +46,7 @@
 					document.getElementById("name").innerHTML = myResponse.name;
 					document.getElementById("customerType").innerHTML = myResponse.status;
 				}
-				$('#myloader').css('display', 'none');
-				$('#mywidget').css('display', 'inline-block');
+
           		}	
         	});
         	var URLforGET = "https://marcowabot.herokuapp.com/add?phone=" + phoneNumber;
@@ -114,18 +86,13 @@
   
    
 </script>
-	
-<div id="myloader" class="divloader">
-    	<h2>Loading your data...</h2>
-    	<div class="loader"></div>
-</div>
 
 	
 <div id="mywidget" class="divwidget">
 	
-	<label>Name: </label> <div id="name"></div></br>
-	<label>Phone Number: </label> <div id="phone"></div></br>
-	<label>Customer Type: </label> <div id="customerType"></div></br>
+	<label>Name: </label> <div id="name">...loading</div></br>
+	<label>Phone Number: </label> <div id="phone">...loading</div></br>
+	<label>Customer Type: </label> <div id="customerType">...loading</div></br>
 
 	</br>
 
