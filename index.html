@@ -73,7 +73,7 @@
 					var myResponse = JSON.parse(xhr.response);
 					document.getElementById("phone").innerHTML = phoneNumber;
 					document.getElementById("name").innerHTML = myResponse.name;
-					document.getElementById("customerType").innerHTML = myResponse.customerType;
+					document.getElementById("customerType").innerHTML = myResponse.status;
 				}
 				$('#myloader').css('display', 'none');
 				$('#mywidget').css('display', 'block');
