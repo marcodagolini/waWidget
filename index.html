@@ -164,9 +164,21 @@
                 	
                 };
 		
+		var onSuccessSDE = function(data) {
+                // Do something with the returning data
+                	var SDE = data;
+			console.log("SDE --> " + SDE);
+                };
+                
+                var onErrorSDE = function(data) {
+                // Do something with the returning data
+                	
+                };
+		
 		
 		SDK.get('authenticatedData.personalInfo.contactInfo[0].phone', onSuccess, onError); //ricontatto
 		SDK.get('claimsAndAuthType.claims.sub', onSuccessClaims, onErrorClaims);
+		SDK.get('SDE', onSuccessSDE, onErrorSDE);
                
               
            });
