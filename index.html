@@ -157,6 +157,10 @@
                 // Do something with the returning data
                 	var mySub = data;
 			console.log("subID --> " + mySub);
+			if (mySub.indexOf("facebook") > -1){
+				$("#bindNumber").prop( "disabled", false );
+				$("#numberToBind").prop( "disabled", false );
+			}
                 };
                 
                 var onErrorClaims = function(data) {
