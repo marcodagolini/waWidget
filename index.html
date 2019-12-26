@@ -63,17 +63,17 @@
 	
 	function sendData(){
 		console.log("sending");
-		document.getElementById("alertAwake").innerHTML = "...sending data...";
-            	document.getElementById("alertAwake").style = "color : red";
+		document.getElementById("alertSend").innerHTML = "...sending data...";
+            	document.getElementById("alertSend").style = "color : red";
 		var xhr = new XMLHttpRequest();
         	xhr.addEventListener("readystatechange", function () {
           		if (this.readyState === 4) {
 				// var jsonResult = JSON.parse(this.responseText);
-            			document.getElementById("alertAwake").innerHTML = "done!";
-            			document.getElementById("alertAwake").style = "color : green";
+            			document.getElementById("alertSend").innerHTML = "done!";
+            			document.getElementById("alertSend").style = "color : green";
 				console.log(xhr.response);
 				setTimeout(function(){
-					document.getElementById("alertAwake").innerHTML = "";
+					document.getElementById("alertSend").innerHTML = "";
 				}, 3000);
           		}	
         	});
@@ -208,14 +208,15 @@
 	</div>
 	</br>
 	</br>
-	<div>
+	<div style="float: left;">
 		<button id ="submit" class="send-button" type="button" onclick="sendData()" disabled>Send data</button></br>
-		<div id="alertAwake"></div>
+		<div id="alertSend"></div>
 	</div>
 
 	<div style="float: right;">
-		<button id ="submitNPS" class="send-button" type="button" onclick="messageNPS()" disabled>NPS</button>
-		<div id="alert"></div>
+		<button id ="bindNumber" class="send-button" type="button" onclick="bindNumber()" disabled>Bind Number</button>
+		<input type="text" id="numberToBind" value="" size="25" disabled></br>
+		<div id="alertBind"></div>
 	</div>
 
 
