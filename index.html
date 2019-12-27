@@ -139,6 +139,9 @@
               	var SDK=lpTag.agentSDK;
               	SDK.init();
 		var phoneNumber;
+		var visitorID;
+		var myClaim = "";
+		var visitorIDretrieved = false;
 		
                 var onSuccess = function(data) {
                 // Do something with the returning data
@@ -153,9 +156,9 @@
 		
 		var onSuccessClaims = function(data) {
                 // Do something with the returning data
-                	var mySub = data;
-			console.log("subID --> " + mySub);
-			if (mySub.indexOf("facebook") > -1){
+                	myClaim = data;
+			console.log("subID --> " + myClaim);
+			if ((myClaim.indexOf("facebook") > -1) && visitorIDretrieved){
 				$("#bindNumber").prop( "disabled", false );
 				$("#numberToBind").prop( "disabled", false );
 			}
@@ -178,9 +181,27 @@
                 };
 		
 		
+		var onSuccessVisitorID = function(data) {
+                // Do something with the returning data
+			visitorIDretrieved = true;
+                	var visitorID = data;
+			console.log("visitorID --> " + visitorID);
+			if (myClaim.indexOf("facebook") > -1){
+				$("#bindNumber").prop( "disabled", false );
+				$("#numberToBind").prop( "disabled", false );
+			}
+                };
+                
+                var onErrorVisitorID = function(data) {
+                // Do something with the returning data
+                	
+                };
+		
+		
 		SDK.get('authenticatedData.personalInfo.contactInfo[0].phone', onSuccess, onError); //ricontatto
 		SDK.get('claimsAndAuthType.claims.sub', onSuccessClaims, onErrorClaims);
 		SDK.get('SDE', onSuccessSDE, onErrorSDE);
+		SDK.get('visitorInfo.visitorId', onSuccessVisitorID, onErrorVisitorID);
                
               
            });
