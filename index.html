@@ -73,12 +73,33 @@
         		xhr.addEventListener("readystatechange", function () {
           			if (this.readyState === 4) {
 					// var jsonResult = JSON.parse(this.responseText);
-            				document.getElementById("alertBind").innerHTML = "done!";
-            				document.getElementById("alertBind").style = "color : green";
-					console.log(xhr.response);
-					setTimeout(function(){
-						document.getElementById("alertBind").innerHTML = "";
-					}, 3000);
+					if (xhr.response === "error"){
+						document.getElementById("alertBind").innerHTML = "error!";
+            					document.getElementById("alertBind").style = "color : red";
+						console.log(xhr.response);
+						setTimeout(function(){
+							document.getElementById("alertBind").innerHTML = "";
+						}, 3000);
+					} else{
+            					document.getElementById("alertBind").innerHTML = "done!";
+            					document.getElementById("alertBind").style = "color : green";
+						console.log(xhr.response);
+						setTimeout(function(){
+							document.getElementById("alertBind").innerHTML = "";
+						}, 3000);
+						var myResponse = JSON.parse(xhr.response);
+						document.getElementById("phone").innerHTML = $("#numberToBind").val();
+						$('#name').val(myResponse.name);
+						$('#facebookID').val(visitorID);
+						if(myResponse.status === "VIP"){
+							$("#myctype").prop("selectedIndex", 0).change();
+						} else if(myResponse.status === "disturber"){
+							$("#myctype").prop("selectedIndex", 1).change();
+						} else{
+							$("#myctype").prop("selectedIndex", 2).change();
+						}
+					}
+					
           			}	
         		});
         		var URLforPOST = "https://marcowabot.herokuapp.com/bind";
