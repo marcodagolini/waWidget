@@ -65,7 +65,27 @@
 		console.log(visitorID);
 		phoneNumber = $("#numberToBind").val();
 		if(phoneNumber && (!isNaN(phoneNumber))){
-			console.log(phoneNumber);
+			console.log("binding");
+			document.getElementById("alertBind").innerHTML = "...binding data...";
+            		document.getElementById("alertBind").style = "color : red";
+			var xhr = new XMLHttpRequest();
+        		xhr.addEventListener("readystatechange", function () {
+          			if (this.readyState === 4) {
+					// var jsonResult = JSON.parse(this.responseText);
+            				document.getElementById("alertBind").innerHTML = "done!";
+            				document.getElementById("alertBind").style = "color : green";
+					console.log(xhr.response);
+					setTimeout(function(){
+						document.getElementById("alertBind").innerHTML = "";
+					}, 3000);
+          			}	
+        		});
+        		var URLforPOST = "https://marcowabot.herokuapp.com/bind";
+			xhr.open("POST", URLforPOST);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			
+			var myBodyToSend = JSON.stringify({"phone": phoneNumber, "visitorID": visitorID});
+        		xhr.send(myBodyToSend);
 		}
 		
 	}
