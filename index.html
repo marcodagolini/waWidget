@@ -64,7 +64,7 @@
 	function bindNumber(){
 		console.log(visitorID);
 		phoneNumber = $("#numberToBind").val();
-		if(!isNaN(phoneNumber)){
+		if(phoneNumber && (!isNaN(phoneNumber))){
 			console.log(phoneNumber);
 		}
 		
