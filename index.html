@@ -182,6 +182,43 @@
 			xhr.send();
 		}
 		
+	}
+	
+	
+	function fetchDataFB() {
+		if(!visitorID){
+			// do nothing
+		} else{
+			var xhr = new XMLHttpRequest();
+			xhr.addEventListener("readystatechange", function () {
+				if (this.readyState === 4) {
+					// var jsonResult = JSON.parse(this.responseText);
+					console.log(xhr.response);
+					if (xhr.response === "error"){
+						// do nothing
+					} else{
+						var myResponse = JSON.parse(xhr.response);
+						document.getElementById("phone").innerHTML = myResponse.phone;
+						$('#name').val(myResponse.name);
+						$('#facebookID').val(visitorID);
+						if(myResponse.status === "VIP"){
+							$("#myctype").prop("selectedIndex", 0).change();
+						} else if(myResponse.status === "disturber"){
+							$("#myctype").prop("selectedIndex", 1).change();
+						} else{
+							$("#myctype").prop("selectedIndex", 2).change();
+						}
+						$("#submit").prop( "disabled", false );
+						
+					}
+				}	
+			});
+			var URLforGET = "https://marcowabot.herokuapp.com/getFB?facebookID=" + visitorID;
+			console.log(URLforGET);
+			xhr.open("GET", URLforGET);
+			xhr.send();
+		}
+		
 	}	
 	
 	
@@ -214,6 +251,7 @@
 			if ((myClaim.indexOf("facebook") > -1) && visitorIDretrieved){
 				$("#bindNumber").prop( "disabled", false );
 				$("#numberToBind").prop( "disabled", false );
+				fetchDataFB();
 			}
                 };
                 
@@ -242,6 +280,7 @@
 			if (myClaim.indexOf("facebook") > -1){
 				$("#bindNumber").prop( "disabled", false );
 				$("#numberToBind").prop( "disabled", false );
+				fetchDataFB();
 			}
                 };
                 
