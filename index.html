@@ -59,9 +59,12 @@
 
 <script>
 	
+	var phoneNumber;
+	var visitorID;
+	
 	function bindNumber(){
 		console.log(visitorID);
-		console.log(myClaim);
+		console.log(phoneNumber);
 		
 	}
 	
@@ -145,8 +148,8 @@
               
               	var SDK=lpTag.agentSDK;
               	SDK.init();
-		var phoneNumber;
-		var visitorID;
+		
+		
 		var myClaim = "";
 		var visitorIDretrieved = false;
 		
