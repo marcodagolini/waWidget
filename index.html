@@ -172,6 +172,12 @@
 						} else{
 							$("#myctype").prop("selectedIndex", 2).change();
 						}
+						if(myResponse.isThereConv !== "none"){
+							var myAlert = "***Alert*** Customer is having a conversation through " + myResponse.isThereConv + " channel";
+							document.getElementById("alertOtherConversations").innerHTML = "done!";
+							document.getElementById("alertOtherConversations").style = "color : red";
+						}
+						
 						$("#submit").prop( "disabled", false );
 						
 					}
@@ -209,6 +215,12 @@
 						} else{
 							$("#myctype").prop("selectedIndex", 2).change();
 						}
+						if(myResponse.isThereConv !== "none"){
+							var myAlert = "***Alert*** Customer is having a conversation through " + myResponse.isThereConv + " channel";
+							document.getElementById("alertOtherConversations").innerHTML = "done!";
+							document.getElementById("alertOtherConversations").style = "color : red";
+						}
+						
 						$("#submit").prop( "disabled", false );
 						
 					}
@@ -336,6 +348,9 @@
 		</div>
 		<div id="alertBind"></div>
 	</div>
+	</br>
+	</br>
+	<div id="alertOtherConversations"></div>
 
 
 
