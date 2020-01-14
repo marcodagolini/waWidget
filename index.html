@@ -33,6 +33,35 @@
   background-color: #f68a1f;
   opacity: 0.5;
 }
+	
+.nps-button {
+    background-color: #6495ed;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0px;
+    cursor: pointer;
+	  border-radius: 4px;
+	  -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+	  font-family: "Myriad pro","Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",sans-serif;
+}
+.nps-button:hover {
+    background-color: #4668a5;
+    color: white;	
+}
+	
+.nps-button:disabled,
+.nps-button[disabled]{
+  background-color: #6495ed;
+  opacity: 0.5;
+}
+	
+	
 #myUrlLink {
   display: none;
 }
@@ -382,7 +411,7 @@
 	</div>
 	</br>
 	</br>
-	<button id ="sendNPS" class="send-button" type="button" onclick="sendNPS()" disabled>Send NPS</button>
+	<button id ="sendNPS" class="nps-button" type="button" onclick="sendNPS()" disabled>Send NPS</button>
 	</br>
 	</br>
 	<div id="alertOtherConversations"></div>
