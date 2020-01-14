@@ -102,6 +102,9 @@
 						} else{
 							$("#myctype").prop("selectedIndex", 2).change();
 						}
+						var myCrmUrl = "https://eu16.lightning.force.com/lightning/r/myContact__c/" + myResponse.id + "/view";
+						$("#myHref a").attr("href",myCrmUrl);
+						$("#myUrlLink").show();
 					}
 					
           			}	
@@ -176,11 +179,16 @@
 						} else{
 							$("#myctype").prop("selectedIndex", 2).change();
 						}
+						var myCrmUrl = "https://eu16.lightning.force.com/lightning/r/myContact__c/" + myResponse.id + "/view";
+						$("#myHref a").attr("href",myCrmUrl);
+						$("#myUrlLink").show();
+						
 						if(myResponse.isThereConv !== "none"){
 							var myAlert = "***Alert*** Customer is having a conversation through " + myResponse.isThereConv + " channel";
 							document.getElementById("alertOtherConversations").innerHTML = myAlert;
 							document.getElementById("alertOtherConversations").style = "color : red";
 						}
+						
 						
 						$("#submit").prop( "disabled", false );
 						
@@ -219,6 +227,10 @@
 						} else{
 							$("#myctype").prop("selectedIndex", 2).change();
 						}
+						var myCrmUrl = "https://eu16.lightning.force.com/lightning/r/myContact__c/" + myResponse.id + "/view";
+						$("#myHref a").attr("href",myCrmUrl);
+						$("#myUrlLink").show();
+						
 						if(myResponse.isThereConv !== "none"){
 							var myAlert = "***Alert*** Customer is having a conversation through " + myResponse.isThereConv + " channel";
 							document.getElementById("alertOtherConversations").innerHTML = myAlert;
@@ -340,7 +352,7 @@
 	</div>
 	</br>
 	<div id="myUrlLink">
-		<a href="#">Customer CRM Page</a>
+		<a id="myHref" href="#">Customer CRM Page</a>
 	</div>
 	</br>
 	</br>
