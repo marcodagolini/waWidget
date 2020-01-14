@@ -70,6 +70,7 @@
 	function sendNPS(){
 		
 		var myCustomMSG = "https://marcodagolini.github.io/surveytest/?customer=" + visitorID;
+		console.log(myCustomMSG);
 		var cmdName = lpTag.agentSDK.cmdNames.write;
 		var data = {text: myCustomMSG};
 		lpTag.agentSDK.command(cmdName, data, function (err) {
