@@ -69,6 +69,12 @@
 	
 	function sendNPS(){
 		
+		var myCustomMSG = "https://marcodagolini.github.io/surveytest/?customer=" + visitorID;
+		var cmdName = lpTag.agentSDK.cmdNames.write;
+		var data = {text: myCustomMSG};
+		lpTag.agentSDK.command(cmdName, data, function (err) {
+			outputLog.value = err ? err : 'done';
+		});
 	}
 	
 	function bindNumber(){
