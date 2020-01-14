@@ -66,6 +66,11 @@
 	var phoneNumber;
 	var visitorID;
 	
+	
+	function sendNPS(){
+		
+	}
+	
 	function bindNumber(){
 		console.log(visitorID);
 		phoneNumber = $("#numberToBind").val();
@@ -191,6 +196,7 @@
 						
 						
 						$("#submit").prop( "disabled", false );
+						$("#sendNPS").prop( "disabled", false );
 						
 					}
 				}	
@@ -238,6 +244,7 @@
 						}
 						
 						$("#submit").prop( "disabled", false );
+						$("#sendNPS").prop( "disabled", false );
 						
 					}
 				}	
@@ -369,6 +376,7 @@
 		<div id="alertBind"></div>
 	</div>
 	</br>
+	<button id ="sendNPS" class="send-button" type="button" onclick="sendNPS()" disabled>Send NPS</button>
 	</br>
 	</br>
 	</br>
