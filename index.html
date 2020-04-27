@@ -92,6 +92,8 @@
 	
 	var phoneNumber;
 	var visitorID;
+	var myClaim = "";
+	var visitorIDretrieved = false;
 	
 	
 	function sendNPS(){
@@ -298,10 +300,7 @@
               
               	var SDK=lpTag.agentSDK;
               	SDK.init();
-		
-		
-		var myClaim = "";
-		var visitorIDretrieved = false;
+
 		
                 var onSuccess = function(data) {
                 // Do something with the returning data
