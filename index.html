@@ -2,7 +2,7 @@
 
 
 	
-	
+
 	
 <style>	
 	
@@ -93,6 +93,8 @@
 	var phoneNumber;
 	var visitorID;
 	var myClaim = "";
+
+	var myType;
 	var visitorIDretrieved = false;
 	
 	
@@ -317,14 +319,27 @@
                 // Do something with the returning data
                 	myClaim = data;
 			console.log("subID --> " + myClaim);
-			if ((myClaim.indexOf("facebook") > -1) && visitorIDretrieved){
+                };
+                
+                var onErrorClaims = function(data) {
+                // Do something with the returning data
+                	
+                };
+
+
+
+		var onSuccessType = function(data) {
+                // Do something with the returning data
+                	myType = data;
+			console.log("subID --> " + myType);
+			if ((myType.indexOf("acebook") > -1) && visitorIDretrieved){
 				$("#bindNumber").prop( "disabled", false );
 				$("#numberToBind").prop( "disabled", false );
 				fetchDataFB();
 			}
                 };
                 
-                var onErrorClaims = function(data) {
+                var onErrorType = function(data) {
                 // Do something with the returning data
                 	
                 };
@@ -346,7 +361,7 @@
 			visitorIDretrieved = true;
                 	visitorID = data;
 			console.log("visitorID --> " + visitorID);
-			if (myClaim.indexOf("facebook") > -1){
+			if (myType.indexOf("acebook") > -1){
 				$("#bindNumber").prop( "disabled", false );
 				$("#numberToBind").prop( "disabled", false );
 				fetchDataFB();
@@ -360,6 +375,8 @@
 		
 		
 		SDK.get('authenticatedData.personalInfo.contactInfo[0].phone', onSuccess, onError); //ricontatto
+
+		SDK.get('authenticatedData.customerDetails.type', onSuccessType, onErrorType);
 		SDK.get('claimsAndAuthType.claims.sub', onSuccessClaims, onErrorClaims);
 		SDK.get('SDE', onSuccessSDE, onErrorSDE);
 		SDK.get('visitorInfo.visitorId', onSuccessVisitorID, onErrorVisitorID);
