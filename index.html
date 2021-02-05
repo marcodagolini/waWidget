@@ -373,6 +373,15 @@
                 	
                 };
 		
+		var onSuccessAgentID = function(data) {
+                // Do something with the returning data
+			console.log("success agentid --> " + data);
+                };
+                
+                var onErrorAgentID = function(data) {
+			console.log("error agentid --> " + data);
+                };
+		
 		
 		SDK.get('authenticatedData.personalInfo.contactInfo[0].phone', onSuccess, onError); //ricontatto
 
@@ -380,6 +389,7 @@
 		SDK.get('claimsAndAuthType.claims.sub', onSuccessClaims, onErrorClaims);
 		SDK.get('SDE', onSuccessSDE, onErrorSDE);
 		SDK.get('visitorInfo.visitorId', onSuccessVisitorID, onErrorVisitorID);
+		SDK.get('chattingAgentInfo.agentId', onSuccessAgentID, onErrorAgentID);
                
               
            });
