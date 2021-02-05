@@ -375,7 +375,7 @@
 		
 		var onSuccessAgentID = function(data) {
                 // Do something with the returning data
-			console.log("success agentid --> " + data);
+			console.log("success agentid --> " + data.agentId);
                 };
                 
                 var onErrorAgentID = function(data) {
@@ -389,7 +389,7 @@
 		SDK.get('claimsAndAuthType.claims.sub', onSuccessClaims, onErrorClaims);
 		SDK.get('SDE', onSuccessSDE, onErrorSDE);
 		SDK.get('visitorInfo.visitorId', onSuccessVisitorID, onErrorVisitorID);
-		SDK.get('chattingAgentInfo.agentId', onSuccessAgentID, onErrorAgentID);
+		SDK.get('chattingAgentInfo', onSuccessAgentID, onErrorAgentID);
                
               
            });
