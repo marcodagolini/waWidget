@@ -151,7 +151,7 @@
 					
           			}	
         		});
-        		var URLforPOST = "https://marcowabot.herokuapp.com/bind";
+        		var URLforPOST = "https://marcodago-server.herokuapp.com/bind";
 			xhr.open("POST", URLforPOST);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			
@@ -178,7 +178,7 @@
 				}, 3000);
           		}	
         	});
-        	var URLforPOST = "https://marcowabot.herokuapp.com/push";
+        	var URLforPOST = "https://marcodago-server.herokuapp.com/push";
 		xhr.open("POST", URLforPOST);
 		xhr.setRequestHeader("Content-Type", "application/json");
 		var phone = $("#phone").html();
@@ -238,7 +238,7 @@
 					}
 				}	
 			});
-			var URLforGET = "https://marcowabot.herokuapp.com/getApp?phone=" + phoneNumber;
+			var URLforGET = "https://marcodago-server.herokuapp.com/getApp?phone=" + phoneNumber;
 			console.log(URLforGET);
 			xhr.open("GET", URLforGET);
 			xhr.send();
@@ -286,7 +286,7 @@
 					}
 				}	
 			});
-			var URLforGET = "https://marcowabot.herokuapp.com/getFB?facebookID=" + visitorID;
+			var URLforGET = "https://marcodago-server.herokuapp.com/getFB?facebookID=" + visitorID;
 			console.log(URLforGET);
 			xhr.open("GET", URLforGET);
 			xhr.send();
